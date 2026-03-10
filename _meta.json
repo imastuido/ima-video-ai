@@ -1,6 +1,8 @@
 {
   "ownerid": "kn70cjr952qdec1nx70zs6wefn7ynq2t",
   "slug": "ima-video-ai",
+  "name": "IMA Studio Video Generation",
+  "description": "IMA 视频生成：Wan 2.6、Kling、Veo、Sora、Pixverse，文生视频/图生视频。Video gen via Wan, Kling, Veo, Sora, Pixverse.",
   "version": "1.0.8",
   "publishedAt": 1741277713337
 }

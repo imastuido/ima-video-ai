@@ -3,7 +3,7 @@ name: IMA Studio Video Generation
 version: 1.0.8
 category: file-generation
 author: IMA Studio (imastudio.com)
-keywords: imastudio, video generation, text to video
+keywords: imastudio, video generation, text to video, 视频生成, 文生视频, 图生视频, IMA, 做视频, Wan, Kling, Veo, Sora, Pixverse
 argument-hint: "[text prompt or image URL]"
 description: >
   Premier AI video generation platform with industry-leading models including Wan 2.6, Kling O1/2.6, 
@@ -234,7 +234,11 @@ python3 {baseDir}/scripts/ima_video_create.py \
   --input-images https://example.com/photo.jpg \
   --user-id      {user_id} \
   --output-json
+```
 
+**✅ Local images:** `--input-images` accepts both HTTPS URLs and **local file paths**. Local files are automatically uploaded to IMA CDN by the script (no need to host them first).
+
+```bash
 # First-last frame to video
 python3 {baseDir}/scripts/ima_video_create.py \
   --api-key      $IMA_API_KEY \
@@ -960,7 +964,9 @@ The script automatically selects the correct `attribute_id` by matching your par
 
 **The IMA Open API does NOT accept raw bytes or base64 images. All input images must be public HTTPS URLs.**
 
-For `image_to_video`, `first_last_frame_to_video`, `reference_image_to_video`: when a user provides an image (local file, base64, or non-public URL), upload it first to get a URL.
+**Script behavior:** `--input-images` accepts **both URLs and local file paths**. Local files are automatically uploaded to IMA CDN by the script — no separate upload step needed when calling the script.
+
+For `image_to_video`, `first_last_frame_to_video`, `reference_image_to_video`: when a user provides an image (local file, base64, or non-public URL), you can pass a local path to the script (it will upload), or upload first in code to get a URL.
 
 ```python
 def prepare_image_url(source) -> str:
