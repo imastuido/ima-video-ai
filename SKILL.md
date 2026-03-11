@@ -18,6 +18,48 @@ description: >
 
 # IMA Video AI Creation
 
+## ⚠️ 重要：模型 ID 参考
+
+**CRITICAL:** When calling the script, you MUST use the exact **model_id** (second/third column), NOT the friendly model name. Do NOT infer model_id from the friendly name.
+
+**Quick Reference Table:**
+
+| 友好名称 (Friendly Name) | model_id (t2v) | model_id (i2v) | 说明 (Notes) |
+|-------------------------|---------------|----------------|-------------|
+| Wan 2.6 | `wan2.6-t2v` | `wan2.6-i2v` | ⚠️ Note -t2v/-i2v suffix |
+| Kling O1 | `kling-video-o1` | `kling-video-o1` | ⚠️ Note video- prefix |
+| Kling 2.6 | `kling-v2-6` | `kling-v2-6` | ⚠️ Note v prefix |
+| Hailuo 2.3 | `MiniMax-Hailuo-2.3` | `MiniMax-Hailuo-2.3` | ⚠️ Note MiniMax- prefix |
+| Hailuo 2.0 | `MiniMax-Hailuo-02` | `MiniMax-Hailuo-02` | ⚠️ Note 02 not 2.0 |
+| Vidu Q2 | `viduq2` | `viduq2-pro` | ⚠️ Different for t2v/i2v |
+| Google Veo 3.1 | `veo-3.1-generate-preview` | `veo-3.1-generate-preview` | ⚠️ Note -generate-preview suffix |
+| Sora 2 Pro | `sora-2-pro` | `sora-2-pro` | ✅ Straightforward |
+| Pixverse | `pixverse` | `pixverse` | ✅ Same as friendly name |
+| SeeDance 1.5 Pro | `doubao-seedance-1.5-pro` | `doubao-seedance-1.5-pro` | ⚠️ Note doubao- prefix |
+
+**User Input Variations Handled by Agent:**
+- "万" / "万2.6" / "Wan" → Wan 2.6 → `wan2.6-t2v` / `wan2.6-i2v`
+- "可灵" / "可灵O1" / "Kling O1" → `kling-video-o1`
+- "可灵2.6" / "Kling 2.6" → `kling-v2-6`
+- "海螺" / "海螺2.3" / "Hailuo" → `MiniMax-Hailuo-2.3`
+- "Veo" / "Google Veo" → `veo-3.1-generate-preview`
+
+**How to get the correct model_id:**
+1. Check this table first
+2. Use `--list-models --task-type text_to_video` (or `image_to_video`)
+3. Refer to command examples below
+
+**Example:**
+```bash
+# ❌ WRONG: Inferring from friendly name
+--model-id kling-o1
+
+# ✅ CORRECT: Using exact model_id from table
+--model-id kling-video-o1
+```
+
+---
+
 ## ⚠️ MANDATORY PRE-CHECK: Read Knowledge Base First!
 
 **If ima-knowledge-ai is not installed:** Skip all "Read …" steps below; use only this SKILL's default models and the **📥 User Input Parsing** tables for task_type, model_id, and parameters.
