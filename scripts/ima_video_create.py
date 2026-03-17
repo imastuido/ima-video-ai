@@ -188,7 +188,7 @@ def get_upload_token(api_key: str, suffix: str,
         resp.raise_for_status()
         data = resp.json()
         
-        if data.get("code") != 0:
+        if data.get("code") not in (0, 200):
             raise RuntimeError(f"Get upload token failed: {data.get('message')}")
         
         return data.get("data", {})
